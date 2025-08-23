@@ -6,6 +6,10 @@ class Desenvolvedor extends Funcionario{
         super(nome, salario)
     }
 
+    /**
+     * 
+     * @override
+     */
     calcularBonus(){
         return this.getSalario() * 0.15
     }
