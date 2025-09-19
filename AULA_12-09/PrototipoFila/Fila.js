@@ -1,0 +1,52 @@
+class Fila{
+    #itens = []
+    #inicio = 0
+    #fim = 0
+
+    entrar(elemento){
+        this.#itens[this.#fim] = elemento
+        this.#fim++
+    }
+
+    atendido(){
+        if(this.estaVazia()){
+            return undefined
+        }
+
+        const item = this.#itens[this.#inicio]
+        delete this.#itens[this.#inicio]
+        this.#inicio++
+
+        if(this.#inicio === this.#fim){
+            this.#inicio = 0
+            this.#fim = 0
+        }
+
+        return item
+
+    }
+
+    inicio(){
+        if(this.estaVazia()){
+            return undefined
+        }
+        return this.#itens[this.#inicio]
+    }
+
+    limpar(){
+        this.#itens = []
+        this.#inicio = 0
+        this.#fim = 0
+    }
+
+    fim(){
+        return this.#itens[this.#fim -1];
+    }
+
+    estaVazia = () => this.#fim === this.#inicio
+
+    tamanho = () => this.#fim - this.#inicio
+
+}
+
+module.exports = Fila;
