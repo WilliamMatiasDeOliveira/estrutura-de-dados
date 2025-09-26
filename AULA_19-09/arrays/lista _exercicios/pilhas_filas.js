@@ -69,11 +69,6 @@ function removerPos(pos){
 }
 
 
-
-
-
-
-
 inserirInicio(1)
 inserirInicio(2)
 inserirInicio(3)
