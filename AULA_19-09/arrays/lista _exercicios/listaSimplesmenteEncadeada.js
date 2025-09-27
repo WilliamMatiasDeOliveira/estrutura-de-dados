@@ -91,7 +91,7 @@ class LinkedList {
     }
 
     removerPos(pos) {
-        if(pos < 0 || pos > this.tamanho){
+        if (pos < 0 || pos > this.tamanho) {
             console.log("Posição inválida !")
             return
         }
@@ -103,16 +103,31 @@ class LinkedList {
         let atual = this.inicio
         let anterior = undefined
 
-        for(let i = 0; i < pos; i++){
+        for (let i = 0; i < pos; i++) {
             anterior = atual
             atual = atual.proximo
         }
-        
+
         const item = atual
         anterior.proximo = atual.proximo
 
         console.log(`O item removido da posição ${pos} foi o ${item.valor}`)
 
+    }
+
+    buscar(valor) {
+        let atual = this.inicio
+        let pos = 0
+
+        while (atual) {
+            if (atual) {
+                if(atual.valor === valor){
+                    console.log(`O valor ${atual.valor} esta na posição ${pos}`)
+                }
+                atual = atual.proximo
+                pos++
+            }
+        }
     }
 
 }
@@ -128,6 +143,10 @@ lista.inserirInicio(2)
 lista.inserirInicio(3)
 lista.inserirInicio(4)
 lista.inserirInicio(5)
+
+lista.buscar(2)
+
+// lista.verTamanho()
 
 // lista.removerPos(2)
 
