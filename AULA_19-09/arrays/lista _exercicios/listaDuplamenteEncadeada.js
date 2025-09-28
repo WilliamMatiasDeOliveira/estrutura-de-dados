@@ -182,12 +182,6 @@ class DoubleLinkedList {
         console.log(res + undefined)
     }
 
-
-
-
-
-
-
 }
 
 
@@ -200,17 +194,17 @@ lista.inserirInicio(3)
 lista.inserirInicio(2)
 lista.inserirInicio(1)
 
-// lista.inserirFim(30)
+lista.inserirFim(30)
 
-// lista.inserirPos("will", 2)
+lista.inserirPos("will", 2)
 
-// lista.removerInicio()
+lista.removerInicio()
 
-// lista.removerFim()
+lista.removerFim()
 
-// lista.removerPos(2)
+lista.removerPos(2)
 
-// lista.buscar(4)
+lista.buscar(4)
 
 lista.mostrarFrente()
 
