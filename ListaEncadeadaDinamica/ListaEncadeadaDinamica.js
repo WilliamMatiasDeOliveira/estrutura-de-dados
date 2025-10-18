@@ -5,23 +5,26 @@ class ListaDinamicaEncadeada {
     fim = undefined;
     tamanho = 0
 
-    mostrarInicio(){
-        if(this.inicio === undefined){
+    // percorrer a lista do inicio até o final
+    mostrarInicio() {
+        if (this.inicio === undefined) {
             return;
         } else {
             let atual = this.inicio;
             let list = "";
 
-            while(atual){
+            while (atual) {
                 list += atual.value + " -> ";
-                console.log(list);
                 atual = atual.next;
             }
+
+            console.log(list + "undefined");
         }
     }
 
-    mostrarFim(){
-        if(this.inicio === undefined){
+    // percorrer a lista do final até o inicio
+    mostrarFim() {
+        if (this.inicio === undefined) {
             return "A lista esta vazia";
         }
 
@@ -29,32 +32,35 @@ class ListaDinamicaEncadeada {
 
         let list = "";
 
-        while(atual){
+        while (atual) {
             list += atual.value + " -> ";
-            console.log(list);
             atual = atual.prev;
         }
 
-
+        console.log(list + "undefined");
     }
 
-    inserirFim(value){
+    // append()
+    // inserir no fim da lista
+    inserirFim(value) {
         const node = new Node(value);
 
-        if(this.inicio === undefined){
+        if (this.inicio === undefined) {
             this.inicio = node;
             this.fim = node;
         } else {
-           this.fim.next = node;
-           node.prev = this.fim;
-           this.fim = node;
+            this.fim.next = node;
+            node.prev = this.fim;
+            this.fim = node;
         }
 
-        this.tamanho ++;
+        this.tamanho++;
     }
 
-    inserirInicio(value){
-        if(this.inicio === undefined){
+    // prepend()
+    // inserir no inicio da lista
+    inserirInicio(value) {
+        if (this.inicio === undefined) {
             this.inicio = node;
             this.fim = node;
         } else {
@@ -64,16 +70,18 @@ class ListaDinamicaEncadeada {
             this.inicio = node;
         }
 
-        this.tamanho ++;
+        this.tamanho++;
     }
 
-    removerFim(){
-        if(this.fim === undefined){
+    // removeLast()
+    // remover do final da lista
+    removerFim() {
+        if (this.fim === undefined) {
             return undefined;
         } else {
             const nodeDelete = this.fim.value;
 
-            if(this.fim === this.inicio){
+            if (this.fim === this.inicio) {
                 this.inicio = undefined;
                 this.fim = undefined
             } else {
@@ -81,18 +89,20 @@ class ListaDinamicaEncadeada {
                 this.fim.next = undefined;
             }
 
-            this.tamanho --;
+            this.tamanho--;
             return nodeDelete;
         }
     }
 
-    removerInicio(){
-        if(this.inicio === undefined){
+    // removeFirst()
+    // remover do inicio da lista
+    removerInicio() {
+        if (this.inicio === undefined) {
             return undefined;
         } else {
             const nodeDelete = this.inicio.value;
 
-            if(this.inicio === this.fim){
+            if (this.inicio === this.fim) {
                 this.inicio = undefined;
                 this.fim = undefined;
             } else {
@@ -100,17 +110,112 @@ class ListaDinamicaEncadeada {
                 this.inicio.prev = undefined;
             }
 
-            this.tamanho --;
+            this.tamanho--;
 
             return nodeDelete;
         }
     }
 
+    // insertAt()
     // inserir um no em uma posição especifica
+    inserir_em(value, indice) {
+        if (indice < 0 || indice > this.tamanho) {
+            return undefined;
+        }
+
+        const node = new Node(value);
+
+        if (indice === 0) {
+            this.inserirInicio(value);
+        }
+
+        if (indice === this.tamanho) {
+            this.inserirFim(value);
+        }
+
+        let atual = this.inicio;
+        let count = 0;
+        let anterior;
+
+        while (count < indice) {
+            anterior = atual;
+            atual = atual.next;
+            count++;
+        }
+
+        node.next = atual;
+        node.prev = anterior;
+        anterior.next = node;
+        atual.prev = node;
+
+        this.tamanho++;
+    }
+
+    // find()
     // encontrar o indice de um valor especifico
+    buscarIndiceAtravesDeUmValor(value) {
+        let atual = this.inicio;
+        let indice = 0;
+
+        while (atual) {
+            if (atual.value === value) {
+                return indice;
+            }
+            atual = atual.next;
+            indice++;
+
+        }
+        return -1;
+    }
+
+    // removeAt()
     // remover um no em uma posição especifica
+    removerUmNoAtravesDoIndice(indice){
+        if(indice < 0 || indice > this.tamanho){
+            return undefined;
+        }
+        if(indice === 0){
+            return this.removerInicio();
+        }
+        if(indice === this.tamanho -1){
+            return this.removerFim();
+        }
+
+        let atual = this.inicio;
+        let count = 0;
+
+        while(count < indice){
+            atual = atual.next;
+            count++;
+        }
+
+        atual.prev.next = atual.next;
+        atual.next.prev = atual.prev;
+
+        this.tamanho--;
+
+        return atual.value;
+    }
+
+    // size()
     // verifica o tamanho da lista
+    verTamanho(){
+        return this.tamanho;
+    }
+
+    // isEmpty()
     // verifica se a lista esta vazia
+    estaVazia(){
+        if(this.tamanho === 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+
+
 
 
 
