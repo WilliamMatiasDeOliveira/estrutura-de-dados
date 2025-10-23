@@ -1,25 +1,25 @@
 
-const MinhaPilha = require("./minhaPilha");
+const Pilha = require("./Pilha.js");
 
-const pilha = new MinhaPilha();
+const pilha = new Pilha();
 
-pilha.adicionar(1); // base
-pilha.adicionar(2);
-pilha.adicionar(3);
-pilha.adicionar(4);
-pilha.adicionar(5);
-pilha.adicionar(6); // topo
+pilha.adicionar("A");
+pilha.adicionar(20);
+pilha.adicionar(30);
 
-console.log("O item removido da pilha foi " + pilha.remover());
-console.log(`O topo da pilha é ${pilha.verTopo()}`);
-console.log(`A pilha esta vazia ? ${pilha.estaVazia()}`);
-console.log(`O tamanho da pilha é ${pilha.verTamanho()}`);
+// Saída: 30 (elemento no topo)
+console.log(pilha.topo());
 
-for(let i = 0; i < pilha.tamanho; i++){
-    console.log(pilha.estrutura[i]);
-}
+// Saída: 30 (remove o elemento do topo)
+console.log(pilha.remover());
 
+// Saída: 20 (agora o topo é 20)
+console.log(pilha.topo());
 
-console.log(`A pilha foi limpa esta com o valor de  ${pilha.limpar()}`);
-console.log(`O seu tamanho agora é ${pilha.tamanho}`);
-console.log(`A pilha esta vazia ? ${pilha.estaVazia()}`);
+// Saída: 2 (dois elementos restantes)
+console.log(pilha.tamanhoPilha());
+
+pilha.limpar();
+
+// Saída: true (o método limpar() foi chamado antes)
+console.log(pilha.estaVazia());

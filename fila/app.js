@@ -1,18 +1,23 @@
-const MinhaFila = require('./MinhaFila');
-const fila = new MinhaFila();
 
-fila.adicionar(5);
-fila.adicionar(4);
-fila.adicionar(3);
-fila.adicionar(2);
-fila.adicionar(1);
+const Fila = require("./Fila.js");
 
-console.log(`O primeiro item da fila é ${fila.primeiro()}`);
-console.log(`O item removido do inicio foi ${fila.remover()}`);
-console.log(`O item removido do inicio foi ${fila.remover()}`);
+const fila = new Fila();
 
-fila.adicionar(40);
+fila.enqueue("Cliente 1");
+fila.enqueue("Cliente 2");
+fila.enqueue("Cliente 3");
 
-console.log(`O tamanho da fila é de ${fila.tamanho()}`);
-console.log(`O primeiro item da fila é ${fila.primeiro()}`);
-console.log(`A fila esta vazia ? ${fila.estaVazia()}`);
+console.log(fila.front()); // Saída: "Cliente 1"
+console.log(fila.dequeue()); // Saída: "Cliente 1"
+console.log(fila.dequeue()); // Saída: "Cliente 2"
+
+fila.enqueue("Cliente 4");
+
+// Saída: 2 (Cliente 3 e Cliente 4 ainda estão na fila)
+console.log(fila.tamanho());
+console.log(fila.front()) // Saída: "Cliente 3"
+
+fila.limpar();
+
+// Saída: true (o método limpar() foi chamado antes)
+console.log(fila.estaVazia());
