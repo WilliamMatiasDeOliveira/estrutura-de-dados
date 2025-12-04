@@ -11,6 +11,7 @@ grafo.adicionarAresta('C', 'D', 2);
 grafo.imprimirGrafo();
 
 grafo.imprimirMatrizAdjacencia();
-grafo.dfs('A');
-grafo.bfs('A');
-grafo.dijkstra('A');
+// grafo.dfs('A');
+// grafo.bfs('A');
+// grafo.dijkstra('A');
+// grafo.imprimirGrafo();

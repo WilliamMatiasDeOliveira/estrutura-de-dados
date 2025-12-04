@@ -125,7 +125,7 @@ class GrafoPonderado {
     // IMPLEMENTAÇÃO DO ALGORITIMO DE DUKSTRA
     // Algoritimo de dukstra para encontrar o caminho mais curto
     // calcula as menores distancias entre o vertice inicial
-    // e todos os demais, com base nos pesoa das arestas
+    // e todos os demais, com base nos pesos das arestas
     // usa a abordagem classica de dukstra
     dijkstra(inicio){
         const distancias = [];
